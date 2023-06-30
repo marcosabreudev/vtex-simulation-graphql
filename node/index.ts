@@ -1,15 +1,9 @@
 import type { ParamsContext, RecorderState, ServiceContext } from '@vtex/api'
 import { Service } from '@vtex/api'
-import { prop } from 'ramda'
 
 import { Clients } from './clients'
-import { book } from './resolvers/book'
-import { books } from './resolvers/books'
-import { deleteBook } from './resolvers/delete'
-import { editBook } from './resolvers/editBook'
-import { newBook } from './resolvers/newBook'
-import { source } from './resolvers/source'
-import { total } from './resolvers/total'
+import { simulation } from './resolvers/simulation'
+import { orderForm } from './resolvers/orderForm'
 
 const MEDIUM_TIMEOUT_MS = 2 * 1000
 
@@ -30,19 +24,12 @@ export default new Service<Clients, RecorderState, ParamsContext>({
   },
   graphql: {
     resolvers: {
-      Book: {
-        cacheId: prop('id'),
-      },
       Mutation: {
-        delete: deleteBook,
-        editBook,
-        newBook,
+        simulation,
       },
       Query: {
-        book,
-        books,
-        source,
-        total,
+        simulation,
+        orderForm,
       },
     },
   },

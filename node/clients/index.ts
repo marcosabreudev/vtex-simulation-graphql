@@ -1,14 +1,8 @@
 import { IOClients } from '@vtex/api'
-
-import { BookClient } from './book'
-import { MarkdownClient } from './markdown'
+import { Checkout } from '@vtex/clients'
 
 export class Clients extends IOClients {
-  public get book() {
-    return this.getOrSet('book', BookClient)
-  }
-
-  public get markdown() {
-    return this.getOrSet('markdown', MarkdownClient)
+  public get simulation() {
+    return this.getOrSet('simulation', Checkout)
   }
 }
